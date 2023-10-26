@@ -43,7 +43,7 @@
         $result = mysqli_query($mysqli, "INSERT INTO penjual(no_tlpn,nama,alamat) VALUES('$no_tlpn','$nama','$alamat')");
         
         // Show message when user added
-        echo "User added successfully. <a href='index.php'>View Users</a>";
+        echo "User added successfully. <a href='index.php'>View Penjual</a>";
     }
     ?>
 </body>
