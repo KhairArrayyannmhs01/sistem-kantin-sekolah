@@ -19,7 +19,7 @@ $result = mysqli_query($mysqli, "SELECT m.jenis, m.harga, m.nama, m.stok,m.id_me
     <table width='80%' border=1>
  
     <tr>
-        <th>jenis</th> <th>harga</th> <th>nama</th> <th>stok</th> <th>id_penjual</th> <th>update</th>
+        <th>jenis</th> <th>harga</th> <th>nama</th> <th>stok</th> <th>penjual</th> <th>update</th>
     </tr>
     <?php  
     while($user_data = mysqli_fetch_array($result)) {         

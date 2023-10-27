@@ -13,8 +13,8 @@
                 <td>jenis</td>
                 <td>
                 <select name="jenis"> 
-                <option value="Makanan">Makanan</option>
-                <option value="Minuman">Minuman</option>
+                <option value="makanan">makanan</option>
+                <option value="minuman">minuman</option>
             </select></td>
             </tr>
             <tr> 

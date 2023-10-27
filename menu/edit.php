@@ -2,6 +2,7 @@
 // include database connection file
 include_once("../config.php");
  
+$query = mysqli_query($mysqli, "SELECT nama, id_penjual FROM penjual");
 // Check if form is submitted for user update, then redirect to homepage after update
 if(isset($_POST['update']))
 {	
@@ -49,12 +50,12 @@ while($user_data = mysqli_fetch_array($result))
     <form name="update_user" method="post" action="edit.php">
         <table border="0">
             <tr> 
-                <td>jenis</td>
+                <td>Jenis</td>
                 <td>
-                <select name="jenis"> 
-                <option value="Makanan">Makanan</option>
-                <option value="Minuman">Minuman</option>
-            </select>
+                    <select name="jenis">
+                        <option value="makanan" <?php echo $jenis=="makanan"?"selected":""; ?>> makanan</option>
+                        <option value="minuman" <?php echo $jenis=="minuman"?"selected":""; ?>>minuman</option>                
+                </td>
             </tr>
             <tr> 
                 <td>harga</td>
@@ -66,20 +67,27 @@ while($user_data = mysqli_fetch_array($result))
             </tr>
             <tr> 
                 <td>stok</td>
-                <td><input type="text" name="stok" value=<?php echo $nama;?>></td>
+                <td><input type="text" name="stok" value=<?php echo $stok;?>></td>
             </tr>
             <tr> 
-                <td>Penjual</td>
+                <td>Nama Penjual</td>
                 <td>
-                <select name="id_penjual"> 
-                    <?php 
-                    include_once("../config.php");
-                    $penjual = mysqli_query($mysqli,"SELECT * FROM penjual ORDER BY id_penjual DESC");
-                    while($data = mysqli_fetch_array($penjual)) {
-                        echo '<option value="'.$data['id_penjual'].'">'.$data['nama'].'</option>';
-                    }
+                    <select name="id_penjual">
+                    <?php while($isi = mysqli_fetch_array($query)): ?>
+                        <option value="<?= $isi['id_penjual'];?>" ><?= $isi['nama']; ?></option>
+                        <?php
+                        while($data = mysqli_fetch_array($query)) {
+                            $selected = $id_penjual == $data['id_penjual'] ? "selected" : '';
+                            echo '<option value="'.$data['id_penjual'].'" '.$selected.'> 
+                                    '.$data['nama'].'
+                                </option>';
+                        }
                     ?>
-            </select></td>
+                    <?php endwhile; ?>
+                    
+                   
+                    </select>
+                </td>
             </tr>
             <tr>
                 <td><input type="hidden" name="id" value=<?php echo $_GET['id'];?>></td>
