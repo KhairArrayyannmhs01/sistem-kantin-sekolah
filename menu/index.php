@@ -3,7 +3,7 @@
 include_once("../config.php");
  
 // Fetch all users data from database
-$result = mysqli_query($mysqli, "SELECT m.jenis, m.harga, m.nama, m.stok,m.id_menu, p.nama as nama_penjual FROM menu m 
+$result = mysqli_query($mysqli, "SELECT m.jenis, m.harga, m.nama, m.stok,m.id_menu, p.nama as nama_penjual FROM menu  m
                                 inner join penjual p on p.id_penjual=m.id_penjual
                                 ORDER BY m.id_menu DESC;");
 ?>
